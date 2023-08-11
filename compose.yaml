@@ -1,0 +1,20 @@
+services:
+  api:
+    image: node:alpine
+    volumes:
+      - ./api:/app
+    working_dir: /app
+    command: npm install && npm run start
+
+  front:
+    image: node:alpine
+    volumes:
+      - ./front:/app
+    working_dir: /app
+    command: npm install && npm run dev
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
